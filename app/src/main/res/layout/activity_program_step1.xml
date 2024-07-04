@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.program.ProgramActivityStep1">
+
+    <TextView
+        android:id="@+id/textViewProgramSTep1Title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/title_program_step1"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="409dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="10dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewProgramSTep1Title" />
+
+    <TextView
+        android:id="@+id/textViewProgramStep1Gender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/title_program_step1_gender"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider" />
+
+    <RadioGroup
+        android:id="@+id/rdGroupProgramStep1Gender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toEndOf="@+id/textViewProgramStep1Gender"
+        app:layout_constraintTop_toBottomOf="@+id/divider">
+
+        <RadioButton
+            android:id="@+id/radioButtonProgramStep1GenderMale"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/label_program_step1_gender_male" />
+
+        <RadioButton
+            android:id="@+id/radioButtonProgramStep1GenderFemale"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/label_program_step1_gender_female" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/textViewProgramStep1Weight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="25dp"
+        android:text="@string/label_program_step1_weight"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rdGroupProgramStep1Gender" />
+
+    <EditText
+        android:id="@+id/editTextProgramStep1Weight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="15dp"
+        android:ems="10"
+        android:inputType="text"
+        android:minHeight="48dp"
+        app:layout_constraintStart_toEndOf="@+id/textViewProgramStep1Weight"
+        app:layout_constraintTop_toBottomOf="@+id/rdGroupProgramStep1Gender"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <TextView
+        android:id="@+id/textViewProgramStep1WeightKg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/label_program_setp1_weightKg"
+        app:layout_constraintStart_toEndOf="@+id/editTextProgramStep1Weight"
+        app:layout_constraintTop_toBottomOf="@+id/rdGroupProgramStep1Gender" />
+
+    <TextView
+        android:id="@+id/textViewProgramStep1Height"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="25dp"
+        android:text="@string/label_program_step1_height"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextProgramStep1Weight" />
+
+    <EditText
+        android:id="@+id/editTextProgramStep1Height"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="15dp"
+        android:ems="10"
+        android:inputType="text"
+        android:minHeight="48dp"
+        app:layout_constraintStart_toEndOf="@+id/textViewProgramStep1Height"
+        app:layout_constraintTop_toBottomOf="@+id/editTextProgramStep1Weight"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <TextView
+        android:id="@+id/textViewProgramStep1HeightCm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="30dp"
+        android:text="@string/label_program_step1_heightCm"
+        app:layout_constraintStart_toEndOf="@+id/editTextProgramStep1Height"
+        app:layout_constraintTop_toBottomOf="@+id/editTextProgramStep1Weight" />
+
+    <TextView
+        android:id="@+id/textViewProgramStep1Dob"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="25dp"
+        android:text="@string/label_program_step1_dob"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextProgramStep1Height" />
+
+    <EditText
+        android:id="@+id/editTextProgramStep1Dob"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="15dp"
+        android:ems="10"
+        android:inputType="date"
+        android:minHeight="48dp"
+        app:layout_constraintStart_toEndOf="@+id/textViewProgramStep1Dob"
+        app:layout_constraintTop_toBottomOf="@+id/editTextProgramStep1Height"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <View
+        android:id="@+id/divider2"
+        android:layout_width="409dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="20dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextProgramStep1Dob" />
+
+    <TextView
+        android:id="@+id/textViewProgramStep1Type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/title_program_step1_program_type"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider2" />
+
+    <RadioGroup
+        android:id="@+id/rdGroupProgramStep1Type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewProgramStep1Type" >
+
+        <RadioButton
+            android:id="@+id/radioButtonProgramStep1TypeLose"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/label_program_step1_type_lose" />
+
+        <RadioButton
+            android:id="@+id/radioButtonProgramStep1TypeGain"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/label_program_step1_type_gain" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/buttonProgramStep1Next"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/label_program_next"
+        tools:layout_editor_absoluteX="290dp"
+        tools:layout_editor_absoluteY="658dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>

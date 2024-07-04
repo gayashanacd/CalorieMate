@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.program.ProgramActivityStep2">
+
+    <TextView
+        android:id="@+id/textViewProgramStep2ActivityLevel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/title_program_step2_activity_level"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RadioGroup
+        android:id="@+id/rdGroupProgramStep2ActivityLevel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewProgramStep2ActivityLevel" >
+
+        <RadioButton
+            android:id="@+id/radioButtonProgramStep2ActivitySedentary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/label_program_step2_activity_sedentary" />
+
+        <RadioButton
+            android:id="@+id/radioButtonProgramStep2ActivityLight"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/label_program_step2_activity_lightly" />
+
+        <RadioButton
+            android:id="@+id/radioButtonProgramStep2ActivityModerate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/label_program_step2_activity_moderate" />
+
+        <RadioButton
+            android:id="@+id/radioButtonProgramStep2ActivityVery"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/label_program_step2_acitivity_very" />
+
+        <RadioButton
+            android:id="@+id/radioButtonProgramStep2ActivitySuper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/label_program_step2_acitivity_super" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/buttonProgramFinish"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        android:text="@string/label_program_finish"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rdGroupProgramStep2ActivityLevel" />
+
+    <Button
+        android:id="@+id/buttonProgramBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/label_program_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rdGroupProgramStep2ActivityLevel" />
+
+    <View
+        android:id="@+id/divider3"
+        android:layout_width="409dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="15dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonProgramFinish" />
+
+    <TextView
+        android:id="@+id/textViewProgramStep2FinalResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="@string/title_program_step2_final_result"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider3" />
+
+    <TextView
+        android:id="@+id/textViewWeightFuture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="50dp"
+        android:text="@string/value_dashboard_weight_future"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewProgramStep2FinalResult" />
+
+    <TextView
+        android:id="@+id/textViewWeightNowTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="5dp"
+        android:text="@string/title_dashboard_weight_now"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewWeightNow" />
+
+    <TextView
+        android:id="@+id/textViewFutureWeightDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="50dp"
+        android:text="@string/value_dashboard_future_date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewWeightFuture" />
+
+    <TextView
+        android:id="@+id/textViewWeightNow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/value_dashboard_weight_now"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewProgramStep2FinalResult" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="75dp"
+        android:layout_height="31dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/baseline_arrow_forward_24"
+        app:layout_constraintEnd_toStartOf="@+id/textViewWeightFuture"
+        app:layout_constraintStart_toEndOf="@+id/textViewWeightNow"
+        app:layout_constraintTop_toBottomOf="@+id/textViewProgramStep2FinalResult" />
+
+    <TextView
+        android:id="@+id/textViewProgramStep2FinalResultInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/label_program_step2_final_info"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewWeightNowTitle" />
+
+    <Button
+        android:id="@+id/buttonBackToLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:text="@string/label_program_backto_login"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
