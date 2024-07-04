@@ -1,6 +1,24 @@
 <resources>
     <string name="app_name">CalorieMate</string>
-    <string name="title_home">Home</string>
+    <string name="title_visualisation">Visualisation</string>
     <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_add"></string>
+    <string name="title_settings">Settings</string>
+    <string name="title_profile">My Profile</string>
+    <string name="title_dashboard_calorie_budget">Calorie Budget</string>
+    <string name="value_dashboard_calorie_budget">1766</string>
+    <string name="value_dashboard_breakfast_calories">66</string>
+    <string name="title_dashboard_breakfast_calories">Breakfast</string>
+    <string name="title_dashboard_lunch_calories">Lunch</string>
+    <string name="value_dashboard_lunch_calories">0</string>
+    <string name="title_dashboard_dinner_calories">Dinner</string>
+    <string name="value_dashboard_dinner_calories">0</string>
+    <string name="title_dashboard_snacks_calories">Snacks</string>
+    <string name="value_dashboard_snacks_calories">0</string>
+    <string name="value_dashboard_left_calories">1700</string>
+    <string name="title_dashboard_left_calories">Left</string>
+    <string name="title_dashboard_exercise">Exercise</string>
+    <string name="value_dashboard_exercise_calories">0</string>
+    <string name="title_dashboard_water_calories">Water</string>
+    <string name="value_dashboard_water_calories">0</string>
 </resources>
