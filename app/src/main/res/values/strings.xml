@@ -50,4 +50,16 @@
     <string name="title_program_step2_final_result">This is your program</string>
     <string name="label_program_step2_final_info">Lose 0.45kg (1lb) per week.</string>
     <string name="label_program_backto_login">Back to login</string>
+    <string name="label_start_line_1">Track what you eat</string>
+    <string name="label_start_line_2">Follow a calorie budget</string>
+    <string name="label_start_line_3">Reach your goal</string>
+    <string name="label_start_get_started">Get Started</string>
+    <string name="label_start_sign_in">Sign In</string>
+    <string name="label_signup_username">Username</string>
+    <string name="label_signup_password">Password</string>
+    <string name="label_button_signup">Sign Up</string>
+    <string name="label_button_login">Login</string>
+    <string name="label_login_forget_password">forget password</string>
+    <string name="title_login_other_logins">or Sign in with</string>
+    <string name="label_login_with_google">Google</string>
 </resources>

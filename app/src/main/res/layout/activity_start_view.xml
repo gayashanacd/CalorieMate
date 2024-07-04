@@ -6,4 +6,97 @@
     android:layout_height="match_parent"
     tools:context=".StartViewActivity">
 
+    <ImageView
+        android:id="@+id/imageViewLogo"
+        android:layout_width="0dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/calorie_mate_logo" />
+
+    <ImageView
+        android:id="@+id/imageViewIcon1"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="50dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewLogo"
+        app:srcCompat="@drawable/baseline_check_circle_24" />
+
+    <TextView
+        android:id="@+id/textViewStartLine1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="50dp"
+        android:text="@string/label_start_line_1"
+        android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@+id/imageViewIcon1"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewLogo" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="25dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewIcon1"
+        app:srcCompat="@drawable/baseline_check_circle_24" />
+
+    <TextView
+        android:id="@+id/textViewStartLine2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="27dp"
+        android:text="@string/label_start_line_2"
+        android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@+id/imageView6"
+        app:layout_constraintTop_toBottomOf="@+id/textViewStartLine1" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="22dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView6"
+        app:srcCompat="@drawable/baseline_check_circle_24" />
+
+    <TextView
+        android:id="@+id/textViewStartLine3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="27dp"
+        android:text="@string/label_start_line_3"
+        android:textSize="24sp"
+        app:layout_constraintStart_toEndOf="@+id/imageView7"
+        app:layout_constraintTop_toBottomOf="@+id/textViewStartLine2" />
+
+    <Button
+        android:id="@+id/buttonStartGetStarted"
+        android:layout_width="334dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="50dp"
+        android:text="@string/label_start_get_started"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewStartLine3" />
+
+    <Button
+        android:id="@+id/buttonStartLogin"
+        android:layout_width="334dp"
+        android:layout_height="60dp"
+        android:text="@string/label_start_sign_in"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonStartGetStarted" />
 </androidx.constraintlayout.widget.ConstraintLayout>
