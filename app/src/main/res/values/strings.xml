@@ -62,4 +62,5 @@
     <string name="label_login_forget_password">forget password</string>
     <string name="title_login_other_logins">or Sign in with</string>
     <string name="label_login_with_google">Google</string>
+    <string name="label_program_create_profile">Create Profile</string>
 </resources>

@@ -8,6 +8,7 @@ import android.view.View;
 
 import com.example.caloriemate.LoginActivity;
 import com.example.caloriemate.R;
+import com.example.caloriemate.SignUpActivity;
 import com.example.caloriemate.databinding.ActivityProgramStep1Binding;
 import com.example.caloriemate.databinding.ActivityProgramStep2Binding;
 
@@ -21,10 +22,10 @@ public class ProgramActivityStep2 extends AppCompatActivity {
         binding = ActivityProgramStep2Binding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        binding.buttonBackToLogin.setOnClickListener(new View.OnClickListener() {
+        binding.buttonCreateProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ProgramActivityStep2.this, LoginActivity.class));
+                startActivity(new Intent(ProgramActivityStep2.this, SignUpActivity.class));
             }
         });
 
