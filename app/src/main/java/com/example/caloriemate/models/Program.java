@@ -29,6 +29,10 @@ public class Program {
     private float weight;
 
     @NonNull
+    @ColumnInfo(name = "dob")
+    private String dob;
+
+    @NonNull
     @ColumnInfo(name = "height")
     private float height;
 
@@ -49,11 +53,12 @@ public class Program {
     public Program() {
     }
 
-    public Program(@NonNull String id, @NonNull String userId, @NonNull String gender, float weight, float height, @NonNull ProgramType programType, @NonNull ActivityLevel activityLevel, String programSummary, String programName) {
+    public Program(@NonNull String id, @NonNull String userId, @NonNull String gender, float weight, float height, @NonNull String dob, @NonNull ProgramType programType, @NonNull ActivityLevel activityLevel, String programSummary, String programName) {
         this.id = id;
         this.userId = userId;
         this.gender = gender;
         this.weight = weight;
+        this.dob = dob;
         this.height = height;
         this.programType = programType;
         this.activityLevel = activityLevel;
@@ -120,6 +125,15 @@ public class Program {
 
     public void setActivityLevel(@NonNull ActivityLevel activityLevel) {
         this.activityLevel = activityLevel;
+    }
+
+    @NonNull
+    public String getDob() {
+        return dob;
+    }
+
+    public void setDob(@NonNull String dob) {
+        this.dob = dob;
     }
 
     public String getProgramSummary() {

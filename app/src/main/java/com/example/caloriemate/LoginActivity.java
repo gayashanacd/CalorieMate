@@ -177,14 +177,16 @@ public class LoginActivity extends AppCompatActivity {
                         Float.parseFloat(eachProgramFields[3]),
                         // Height - 170
                         Float.parseFloat(eachProgramFields[4]),
+                        // DOB - 1986-08-03
+                        eachProgramFields[5],
                         // ProgramType - LOSE_WEIGHT
-                        ProgramType.valueOf(eachProgramFields[5]),
+                        ProgramType.valueOf(eachProgramFields[6]),
                         // ActivityLevel - LOSE_WEIGHT
-                        ActivityLevel.valueOf(eachProgramFields[6]),
+                        ActivityLevel.valueOf(eachProgramFields[7]),
                         // ProgramSummary -
-                        eachProgramFields[7],
+                        eachProgramFields[8],
                         // ProgramName -
-                        eachProgramFields[8]
+                        eachProgramFields[9]
                 );
                 programs.add(eachProgram);
             }
