@@ -20,4 +20,7 @@ public interface ProgramDao {
 
     @Query("SELECT * FROM programs WHERE id=:programId")
     Program getProgramById(String programId);
+
+    @Query("SELECT * FROM programs WHERE userId=:userId")
+    Program getProgramByUserId(String userId);
 }

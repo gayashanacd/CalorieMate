@@ -186,7 +186,8 @@ public class LoginActivity extends AppCompatActivity {
                         // ProgramSummary -
                         eachProgramFields[8],
                         // ProgramName -
-                        eachProgramFields[9]
+                        eachProgramFields[9],
+                        0
                 );
                 programs.add(eachProgram);
             }

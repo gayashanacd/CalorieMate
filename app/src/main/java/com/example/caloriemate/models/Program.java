@@ -50,20 +50,24 @@ public class Program {
     @ColumnInfo(name = "programName")
     private String programName;
 
+    @ColumnInfo(name = "targetCal")
+    private double targetCal;
+
     public Program() {
     }
 
-    public Program(@NonNull String id, @NonNull String userId, @NonNull String gender, float weight, float height, @NonNull String dob, @NonNull ProgramType programType, @NonNull ActivityLevel activityLevel, String programSummary, String programName) {
+    public Program(@NonNull String id, @NonNull String userId, @NonNull String gender, float weight, float height, @NonNull String dob, @NonNull ProgramType programType, @NonNull ActivityLevel activityLevel, String programSummary, String programName, double targetCal) {
         this.id = id;
         this.userId = userId;
         this.gender = gender;
         this.weight = weight;
-        this.dob = dob;
         this.height = height;
+        this.dob = dob;
         this.programType = programType;
         this.activityLevel = activityLevel;
         this.programSummary = programSummary;
         this.programName = programName;
+        this.targetCal = targetCal;
     }
 
     @NonNull
@@ -95,6 +99,14 @@ public class Program {
     @NonNull
     public String getUserId() {
         return userId;
+    }
+
+    public double getTargetCal() {
+        return targetCal;
+    }
+
+    public void setTargetCal(double targetCal) {
+        this.targetCal = targetCal;
     }
 
     public void setUserId(@NonNull String userId) {
