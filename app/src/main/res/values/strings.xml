@@ -2,7 +2,7 @@
     <string name="app_name">CalorieMate</string>
     <string name="title_visualisation">Visualisation</string>
     <string name="title_dashboard">Dashboard</string>
-    <string name="title_add"></string>
+    <string name="title_add">Add Meal</string>
     <string name="title_settings">Settings</string>
     <string name="title_profile">My Profile</string>
     <string name="title_dashboard_calorie_budget">Calorie Budget</string>
@@ -65,4 +65,6 @@
     <string name="label_program_create_profile">Create Profile</string>
     <string name="label_program_step2_daily_calorie">Daily Calorie Intake :</string>
     <string name="value_program_step2_daily_calorie">1560</string>
+    <string name="label_add_meal_meal_type">Meal</string>
+    <string name="btn_label_add_meal">Add</string>
 </resources>
