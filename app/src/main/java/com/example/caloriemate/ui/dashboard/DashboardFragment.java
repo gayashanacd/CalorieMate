@@ -30,6 +30,7 @@ public class DashboardFragment extends Fragment {
     private FragmentDashboardBinding binding;
     CalarieMateDatabase cmDB;
     Program currentProgram;
+    SharedPreferences settings;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -44,9 +45,9 @@ public class DashboardFragment extends Fragment {
         cmDB = Room.databaseBuilder(requireContext(), CalarieMateDatabase.class, "calariemate.db").build();
         ExecutorService executorService = Executors.newSingleThreadExecutor();
 
-        // get current program
-        SharedPreferences settings =  requireActivity().getSharedPreferences("PREFS_CM", 0);
+        settings =  requireActivity().getSharedPreferences("PREFS_CM", 0);
         String userId = settings.getString("USERID", "");
+
         executorService.execute(new Runnable() {
             @Override
             public void run() {
@@ -59,6 +60,11 @@ public class DashboardFragment extends Fragment {
     }
 
     private void setData() {
+
+        // set program in shared preferences
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putString("PROGRAMID", currentProgram.getId());
+        editor.apply();
 
         // update weight goal data
         float futureWeight = 0;
