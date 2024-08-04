@@ -214,25 +214,14 @@
         app:layout_constraintTop_toBottomOf="@+id/divider2" />
 
     <TextView
-        android:id="@+id/textViewWeightNow"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="20dp"
-        android:text="@string/value_dashboard_weight_now"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewGoalPlanTitle" />
-
-    <TextView
         android:id="@+id/textViewWeightNowTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="55dp"
+        android:layout_marginStart="60dp"
         android:layout_marginTop="5dp"
         android:text="@string/title_dashboard_weight_now"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewWeightNow" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewDashboardWeightNow" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -240,33 +229,12 @@
         android:layout_height="31dp"
         android:layout_marginTop="20dp"
         android:src="@drawable/baseline_arrow_forward_24"
-        app:layout_constraintEnd_toStartOf="@+id/textViewWeightFuture"
-        app:layout_constraintStart_toEndOf="@+id/textViewWeightNow"
+        app:layout_constraintEnd_toStartOf="@+id/textViewDashboardWeightFuture"
+        app:layout_constraintStart_toEndOf="@+id/textViewDashboardWeightNow"
         app:layout_constraintTop_toBottomOf="@+id/textViewGoalPlanTitle" />
 
     <TextView
-        android:id="@+id/textViewWeightFuture"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="50dp"
-        android:text="@string/value_dashboard_weight_future"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewGoalPlanTitle" />
-
-    <TextView
-        android:id="@+id/textViewFutureWeightDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="50dp"
-        android:text="@string/value_dashboard_future_date"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewWeightFuture" />
-
-    <EditText
-        android:id="@+id/editTextDateSelector"
+        android:id="@+id/textViewDateSelector"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="6dp"
@@ -274,6 +242,7 @@
         android:inputType="date"
         android:minHeight="48dp"
         android:textAlignment="center"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/divider1"
@@ -308,5 +277,37 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewCalorieBudgetValue" />
+
+    <TextView
+        android:id="@+id/textViewDashboardWeightNow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="20dp"
+        android:text="@string/value_dashboard_weight_now"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewGoalPlanTitle" />
+
+    <TextView
+        android:id="@+id/textViewDashboardWeightFuture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="50dp"
+        android:text="@string/value_dashboard_weight_future"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewGoalPlanTitle" />
+
+    <TextView
+        android:id="@+id/textViewDashboardFutureWeightDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="48dp"
+        android:text="@string/value_dashboard_future_date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewDashboardWeightFuture" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

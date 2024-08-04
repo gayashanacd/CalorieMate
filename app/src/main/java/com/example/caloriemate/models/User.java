@@ -33,14 +33,13 @@ public class User {
     @ColumnInfo(name = "imagePath")
     private String imagePath;
 
-    @NonNull
     @ColumnInfo(name = "programId")
     private String programId;
 
     public User() {
     }
 
-    public User(@NonNull String id, @NonNull String userName, @NonNull String password, String firstName, String lastName, boolean isAdmin, String imagePath, @NonNull String programId) {
+    public User(@NonNull String id, @NonNull String userName, @NonNull String password, String firstName, String lastName, boolean isAdmin, String imagePath, String programId) {
         this.id = id;
         this.userName = userName;
         this.password = password;
@@ -123,12 +122,11 @@ public class User {
         isAdmin = admin;
     }
 
-    @NonNull
     public String getProgramId() {
         return programId;
     }
 
-    public void setProgramId(@NonNull String programId) {
+    public void setProgramId(String programId) {
         this.programId = programId;
     }
 }

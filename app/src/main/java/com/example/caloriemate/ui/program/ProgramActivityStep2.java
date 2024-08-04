@@ -6,6 +6,7 @@ import androidx.room.Room;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -36,7 +37,7 @@ public class ProgramActivityStep2 extends AppCompatActivity {
     CalarieMateDatabase cmDB;
     Program currentProgram;
     int age;
-    String dob, gender, programType;
+    String dob, gender, programType, userId;
     float weight, height;
     double bmr, tdee, targetCal;
     private static final String CHARACTERS = "0123456789";
@@ -84,10 +85,15 @@ public class ProgramActivityStep2 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 saveProgram();
-                startActivity(new Intent(ProgramActivityStep2.this, SignUpActivity.class));
+                Bundle bundle = new Bundle();
+                bundle.putString("NEW_USER_ID", userId);
+                Intent intent = new Intent(ProgramActivityStep2.this, SignUpActivity.class);
+                intent.putExtras(bundle);
+                startActivity(intent);
             }
         });
 
+        binding.buttonProgramBack.setVisibility(View.INVISIBLE);
         binding.buttonProgramBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -122,9 +128,13 @@ public class ProgramActivityStep2 extends AppCompatActivity {
     }
 
     private void generateProfile(Bundle bundle) {
-
         SharedPreferences settings = getSharedPreferences("PREFS_CM", 0);
-        String userId = settings.getString("USERID", "");
+        userId = settings.getString("USERID", "");
+
+        if(userId.equals("")){
+            userId = generateID();
+        }
+
         dob = bundle.getString("DOB");
         gender = bundle.getString("GENDER");
         age = calculateAge(dob);
@@ -180,8 +190,16 @@ public class ProgramActivityStep2 extends AppCompatActivity {
             targetCal = tdee - 500;
         }
 
-        binding.textViewProgramStep2DailyCalorieVal.setText((int) targetCal);
+        targetCal = roundUp(targetCal, 2);
+        Log.d("CM-DOB", String.valueOf(targetCal));
+        binding.textViewProgramStep2DailyCalorieVal.setText(String.valueOf(targetCal));
         currentProgram = new Program(generateID(), userId, gender, weight, height, dob, ProgramType.valueOf(programType), activityLevel, "", "", targetCal);
+    }
+
+    public static double roundUp(double value, int places) {
+        if (places < 0) throw new IllegalArgumentException();
+        double scale = Math.pow(10, places);
+        return Math.ceil(value * scale) / scale;
     }
 
     public static String get2MonthDate() {

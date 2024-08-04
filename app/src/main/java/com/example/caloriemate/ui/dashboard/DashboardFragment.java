@@ -2,6 +2,7 @@ package com.example.caloriemate.ui.dashboard;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,9 +16,11 @@ import androidx.room.Room;
 import com.example.caloriemate.databases.CalarieMateDatabase;
 import com.example.caloriemate.databinding.FragmentDashboardBinding;
 import com.example.caloriemate.models.Program;
+import com.example.caloriemate.ui.program.ProgramActivityStep2;
 import com.example.caloriemate.utils.ProgramType;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.time.format.TextStyle;
 import java.util.ArrayList;
 import java.util.List;
@@ -52,7 +55,12 @@ public class DashboardFragment extends Fragment {
             @Override
             public void run() {
                 currentProgram = cmDB.programDAO().getProgramByUserId(userId);
-                setData();
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        setData();
+                    }
+                });
             }
         });
 
@@ -60,11 +68,16 @@ public class DashboardFragment extends Fragment {
     }
 
     private void setData() {
-
         // set program in shared preferences
         SharedPreferences.Editor editor = settings.edit();
         editor.putString("PROGRAMID", currentProgram.getId());
         editor.apply();
+
+        // set current date
+        LocalDate currentDate = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String formattedDate = currentDate.format(formatter);
+        binding.textViewDateSelector.setText(formattedDate);
 
         // update weight goal data
         float futureWeight = 0;
@@ -74,11 +87,10 @@ public class DashboardFragment extends Fragment {
         else {
             futureWeight = currentProgram.getWeight()  + 4;
         }
-        binding.textViewWeightFuture.setText((int) futureWeight + " kg");
-        binding.textViewWeightNow.setText((int) currentProgram.getWeight() + " kg");
-        binding.textViewFutureWeightDate.setText(get2MonthDate());
-
-        binding.textViewCalorieBudgetValue.setText((int) currentProgram.getTargetCal());
+        binding.textViewDashboardWeightFuture.setText((int) futureWeight + " kg");
+        binding.textViewDashboardWeightNow.setText((int) currentProgram.getWeight() + " kg");
+        binding.textViewDashboardFutureWeightDate.setText(get2MonthDate());
+        binding.textViewCalorieBudgetValue.setText(String.valueOf(currentProgram.getTargetCal()));
     }
 
     public static String get2MonthDate() {

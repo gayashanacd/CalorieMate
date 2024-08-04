@@ -1,2 +1,2 @@
-Id,UserId,Gender,Weight,Height,ProgramType,ActivityLevel,ProgramSummary,ProgramName
-00001,00001,Male,70,170,1986-08-04,LOSE_WEIGHT,LIGHTLY,,
+Id,UserId,Gender,Weight,Height,ProgramType,ActivityLevel,ProgramSummary,ProgramName,TargetCals
+00001,00001,Male,70,170,1986-08-04,LOSE_WEIGHT,LIGHTLY,program1,program1,1700

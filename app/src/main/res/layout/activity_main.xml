@@ -55,13 +55,14 @@
         app:navGraph="@navigation/mobile_navigation" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fabAddNewMeal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/white"
         android:src="@drawable/ic_add_24"
         app:layout_anchor="@id/nav_view"
         app:maxImageSize="40dp"
-        app:tint ="@color/lavender"
+        app:tint="@color/lavender"
         tools:ignore="MissingConstraints" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

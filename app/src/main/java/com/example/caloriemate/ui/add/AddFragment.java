@@ -3,6 +3,7 @@ package com.example.caloriemate.ui.add;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.room.Room;
 
@@ -22,6 +24,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.example.caloriemate.LoginActivity;
 import com.example.caloriemate.MainActivity;
+import com.example.caloriemate.R;
 import com.example.caloriemate.adapters.MealItemsAdapter;
 import com.example.caloriemate.databases.CalarieMateDatabase;
 import com.example.caloriemate.databinding.FragmentAddBinding;
@@ -29,12 +32,15 @@ import com.example.caloriemate.databinding.FragmentDashboardBinding;
 import com.example.caloriemate.models.Meal;
 import com.example.caloriemate.models.User;
 import com.example.caloriemate.utils.JsonParser;
+import com.example.caloriemate.utils.VolleySingleton;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.security.SecureRandom;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -65,6 +71,11 @@ public class AddFragment extends Fragment {
         View root = binding.getRoot();
 
         cmDB = Room.databaseBuilder(requireContext(), CalarieMateDatabase.class, "calariemate.db").build();
+        requestQueue = VolleySingleton.getInstance(requireContext()).getRequestQueue();
+
+        recyclerView = binding.recyclerViewAddMealItems;
+        layoutManager = new LinearLayoutManager(requireContext());
+        recyclerView.setLayoutManager(layoutManager);
 
         binding.buttonAddMealAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,8 +84,6 @@ public class AddFragment extends Fragment {
             }
         });
 
-//        final TextView textView = binding.textDashboard;
-//        addViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         return root;
     }
 
@@ -91,28 +100,15 @@ public class AddFragment extends Fragment {
                         // Handle the response
                         try {
                             jsonArray = response.getJSONArray("items");
+                            // Log.d("DATA_CAME", jsonArray.toString());
                             List<JSONObject> jsonObjectList = JsonParser.parseJsonArray(String.valueOf(jsonArray));
                             adapter = new MealItemsAdapter(jsonObjectList, requireContext());
                             recyclerView.setAdapter(adapter);
-
                             saveMeal();
-                            // for (int i = 0; i < jsonArray.length(); i ++){
-//                                JSONObject jsonObject = jsonArray.getJSONObject(i);
-//                                String title = jsonObject.getString("title");
-//                                String overview = jsonObject.getString("overview");
-//                                double rating = jsonObject.getDouble("vote_average");
-//                                String imgUrl = "https://image.tmdb.org/t/p/w300" + jsonObject.getString("poster_path");
-
-//                                Movie movie = new Movie(title, imgUrl, rating, overview);
-//                                movieList.add(movie);
-                            // }
                         }
                         catch(Exception e){
                             e.printStackTrace();
                         }
-
-//                        RecyclerAdapter recyclerAdapter = new RecyclerAdapter(MainActivity.this, movieList);
-//                        recyclerView.setAdapter(recyclerAdapter);
                     }
                 },
                 new Response.ErrorListener() {
@@ -150,12 +146,32 @@ public class AddFragment extends Fragment {
         String programId = settings.getString("PROGRAMID", "");
         ExecutorService executorService = Executors.newSingleThreadExecutor();
 
+        LocalDate currentDate = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String formattedDate = currentDate.format(formatter);
+
+        int mealPosition = binding.spinnerAddMealType.getSelectedItemPosition();
+        String mealType = "";
+
+        if(mealPosition == 0){
+            mealType = "Breakfast";
+        }
+        else if(mealPosition == 1){
+            mealType = "Lunch";
+        }
+        else if(mealPosition == 2){
+            mealType = "Dinner";
+        }
+        else if(mealPosition == 3){
+            mealType = "Snacks";
+        }
+
         for (int i = 0; i < jsonArray.length(); i ++){
             JSONObject jsonObject = jsonArray.getJSONObject(i);
             String name = jsonObject.getString("name");
             String calories = jsonObject.getString("calories");
 
-            Meal meal = new Meal(generateID(), userId, programId, binding.editTextAddMealVal.getText().toString(), name, Double.parseDouble(calories), jsonObject.toString());
+            Meal meal = new Meal(generateID(), userId, programId, formattedDate, mealType, binding.editTextAddMealVal.getText().toString(), name, Double.parseDouble(calories), jsonObject.toString());
 
             executorService.execute(new Runnable() {
                 @Override

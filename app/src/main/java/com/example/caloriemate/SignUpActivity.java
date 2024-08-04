@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -25,6 +26,7 @@ public class SignUpActivity extends AppCompatActivity {
     private static final String CHARACTERS = "0123456789";
     private static final int ID_LENGTH = 5;
     private static final SecureRandom random = new SecureRandom();
+    String userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +34,8 @@ public class SignUpActivity extends AppCompatActivity {
         binding = ActivitySignUpBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
         cmDB = Room.databaseBuilder(getApplicationContext(), CalarieMateDatabase.class, "calariemate.db").build();
+        Bundle bundle = getIntent().getExtras();
+        userId = bundle.getString("NEW_USER_ID");
 
         binding.buttonSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,11 +57,32 @@ public class SignUpActivity extends AppCompatActivity {
 
     private void createUser(){
         ExecutorService executorService = Executors.newSingleThreadExecutor();
-        User user = new User(generateID(), binding.editTextSignUpUsername.getText().toString(), binding.editTextSignUpPassword.getText().toString());
+        String _userId, userName, password;
+
+        if(userId.equals("")){
+            _userId = generateID();
+        }
+        else {
+            _userId = userId;
+        }
+
+        userName = binding.editTextSignUpUsername.getText().toString();
+        password = binding.editTextSignUpPassword.getText().toString();
+
+        User user = new User(_userId, userName, password, false);
         executorService.execute(new Runnable() {
             @Override
             public void run() {
                 cmDB.userDAO().insertOneUser(user);
+
+                SharedPreferences settings = getSharedPreferences("PREFS_CM", 0);
+                SharedPreferences.Editor editor = settings.edit();
+                editor.putString("USERNAME", userName);
+                editor.putString("PASSWORD", password);
+                editor.putString("USERID", _userId);
+                editor.putBoolean("IS_LOGGED", true);
+                editor.apply();
+
                 runOnUiThread(new Runnable() {
                     @Override
                     public void run() {

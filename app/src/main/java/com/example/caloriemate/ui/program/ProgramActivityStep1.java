@@ -49,18 +49,19 @@ public class ProgramActivityStep1 extends AppCompatActivity {
             }
         });
 
-        Bundle bundle = new Bundle();
-        bundle.putString("GENDER", gender);
-        bundle.putFloat("WEIGHT", Float.parseFloat(binding.editTextProgramStep1Weight.getText().toString()));
-        bundle.putFloat("HEIGHT", Float.parseFloat(binding.editTextProgramStep1Height.getText().toString()));
-        bundle.putString("DOB", binding.editTextProgramStep1Dob.getText().toString());
-        bundle.putString("PROGRAM_TYPE", programType);
-        Intent intent = new Intent(ProgramActivityStep1.this, ProgramActivityStep2.class);
-        intent.putExtras(bundle);
-
         binding.buttonProgramStep1Next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                Bundle bundle = new Bundle();
+                bundle.putString("GENDER", gender);
+                bundle.putFloat("WEIGHT", Float.parseFloat(binding.editTextProgramStep1Weight.getText().toString()));
+                bundle.putFloat("HEIGHT", Float.parseFloat(binding.editTextProgramStep1Height.getText().toString()));
+                bundle.putString("DOB", binding.editTextProgramStep1Dob.getText().toString());
+                bundle.putString("PROGRAM_TYPE", programType);
+                Intent intent = new Intent(ProgramActivityStep1.this, ProgramActivityStep2.class);
+                intent.putExtras(bundle);
+
                 startActivity(intent);
             }
         });

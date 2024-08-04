@@ -42,19 +42,18 @@
 
     <Spinner
         android:id="@+id/spinnerAddMealType"
-        android:layout_width="match_parent"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
+        android:entries="@array/meal_type_items"
         android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textViewAddMealType"
         app:layout_constraintTop_toBottomOf="@+id/divider4" />
 
     <EditText
         android:id="@+id/editTextAddMealVal"
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
@@ -77,15 +76,13 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewAddMealItems"
-        android:layout_width="409dp"
-        android:layout_height="547dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginBottom="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextAddMealVal" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonAddMealAdd" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

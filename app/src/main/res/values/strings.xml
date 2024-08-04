@@ -22,10 +22,10 @@
     <string name="title_dashboard_water_calories">Water</string>
     <string name="value_dashboard_water_calories">0</string>
     <string name="title_dashboard_goal_plan">My Weight Goal Plan</string>
-    <string name="value_dashboard_weight_now">69kg</string>
+    <string name="value_dashboard_weight_now">__ kg</string>
     <string name="title_dashboard_weight_now">Now</string>
-    <string name="value_dashboard_weight_future">65kg</string>
-    <string name="value_dashboard_future_date">Aug 28</string>
+    <string name="value_dashboard_weight_future">__ kg</string>
+    <string name="value_dashboard_future_date">___ __</string>
     <string name="title_program_step1">Lets build your program</string>
     <string name="title_program_step1_gender">Gender</string>
     <string name="label_program_step1_gender_male">Male</string>
@@ -48,7 +48,7 @@
     <string name="label_program_finish">Finish</string>
     <string name="label_program_back">Back</string>
     <string name="title_program_step2_final_result">This is your program</string>
-    <string name="label_program_step2_final_info">Lose 0.45kg (1lb) per week.</string>
+    <string name="label_program_step2_final_info"></string>
     <string name="label_program_backto_login">Back to login</string>
     <string name="label_start_line_1">Track what you eat</string>
     <string name="label_start_line_2">Follow a calorie budget</string>
@@ -64,7 +64,15 @@
     <string name="label_login_with_google">Google</string>
     <string name="label_program_create_profile">Create Profile</string>
     <string name="label_program_step2_daily_calorie">Daily Calorie Intake :</string>
-    <string name="value_program_step2_daily_calorie">1560</string>
+    <string name="value_program_step2_daily_calorie">____</string>
     <string name="label_add_meal_meal_type">Meal</string>
     <string name="btn_label_add_meal">Add</string>
+
+    <string-array name="meal_type_items">
+        <item>Breakfast</item>
+        <item>Lunch</item>
+        <item>Dinner</item>
+        <item>Snacks</item>
+    </string-array>
+
 </resources>
