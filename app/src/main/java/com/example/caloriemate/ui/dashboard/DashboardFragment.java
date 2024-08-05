@@ -15,6 +15,7 @@ import androidx.room.Room;
 
 import com.example.caloriemate.databases.CalarieMateDatabase;
 import com.example.caloriemate.databinding.FragmentDashboardBinding;
+import com.example.caloriemate.models.Meal;
 import com.example.caloriemate.models.Program;
 import com.example.caloriemate.ui.program.ProgramActivityStep2;
 import com.example.caloriemate.utils.ProgramType;
@@ -34,6 +35,8 @@ public class DashboardFragment extends Fragment {
     CalarieMateDatabase cmDB;
     Program currentProgram;
     SharedPreferences settings;
+    double breakfastCals, lunchCals, dinnerCals, snackCals, totalDailyRemCals, completionPerc;
+    String formattedDate, userId;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -43,18 +46,52 @@ public class DashboardFragment extends Fragment {
         binding = FragmentDashboardBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        final TextView textView = binding.textDashboard;
-        dashboardViewModel.getText().observe(getViewLifecycleOwner(), textView::setText);
         cmDB = Room.databaseBuilder(requireContext(), CalarieMateDatabase.class, "calariemate.db").build();
-        ExecutorService executorService = Executors.newSingleThreadExecutor();
 
         settings =  requireActivity().getSharedPreferences("PREFS_CM", 0);
-        String userId = settings.getString("USERID", "");
+        userId = settings.getString("USERID", "");
+        LocalDate currentDate = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        formattedDate = currentDate.format(formatter);
+        fetchData();
 
+        binding.buttonPreviousDay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                formattedDate = getPlusMinusDates("minus");
+                fetchData();
+            }
+        });
+
+        binding.buttonNextDay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                formattedDate = getPlusMinusDates("plus");
+                fetchData();
+            }
+        });
+
+        return root;
+    }
+
+    private void fetchData(){
+        ExecutorService executorService = Executors.newSingleThreadExecutor();
         executorService.execute(new Runnable() {
             @Override
             public void run() {
                 currentProgram = cmDB.programDAO().getProgramByUserId(userId);
+
+                // get total calories for all meals by type for today
+                breakfastCals = cmDB.mealDao().getAllMealsByType(userId, "Breakfast", formattedDate);
+                lunchCals = cmDB.mealDao().getAllMealsByType(userId, "Lunch", formattedDate);
+                dinnerCals = cmDB.mealDao().getAllMealsByType(userId, "Dinner", formattedDate);
+                snackCals = cmDB.mealDao().getAllMealsByType(userId, "Snacks", formattedDate);
+
+                // calculate total remaining cals
+                double totalDailyCals = breakfastCals + lunchCals + dinnerCals + snackCals;
+                totalDailyRemCals = ProgramActivityStep2.roundUp(currentProgram.getTargetCal() - totalDailyCals, 2);
+                completionPerc = ProgramActivityStep2.roundUp((totalDailyCals / currentProgram.getTargetCal() * 100), 1);
+
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
@@ -63,8 +100,26 @@ public class DashboardFragment extends Fragment {
                 });
             }
         });
+    }
 
-        return root;
+    private String getPlusMinusDates(String position){
+        // Parse the date string to LocalDate
+        LocalDate date = LocalDate.parse(formattedDate);
+
+        LocalDate plusOneDay = date.plusDays(1);
+        LocalDate minusOneDay = date.minusDays(1);
+
+        // Format the dates back to strings
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        String plusOneDayString = plusOneDay.format(formatter);
+        String minusOneDayString = minusOneDay.format(formatter);
+
+        if(position.equals("plus")){
+            return plusOneDayString;
+        }
+        else {
+            return minusOneDayString;
+        }
     }
 
     private void setData() {
@@ -74,10 +129,15 @@ public class DashboardFragment extends Fragment {
         editor.apply();
 
         // set current date
-        LocalDate currentDate = LocalDate.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        String formattedDate = currentDate.format(formatter);
         binding.textViewDateSelector.setText(formattedDate);
+
+        // Set calories
+        binding.textViewBreakfastCalories.setText(String.valueOf(breakfastCals));
+        binding.textViewLunchCalories.setText(String.valueOf(lunchCals));
+        binding.textViewDinnerCalories.setText(String.valueOf(dinnerCals));
+        binding.textViewSnacksCalories.setText(String.valueOf(snackCals));
+        binding.textViewLeftCalories.setText(String.valueOf(totalDailyRemCals));
+        binding.textViewCaloriePercentage.setText(String.valueOf(completionPerc) + " %");
 
         // update weight goal data
         float futureWeight = 0;

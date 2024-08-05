@@ -12,6 +12,7 @@ import android.view.View;
 
 import com.example.caloriemate.databases.CalarieMateDatabase;
 import com.example.caloriemate.databinding.ActivityStartViewBinding;
+import com.example.caloriemate.models.Meal;
 import com.example.caloriemate.models.Program;
 import com.example.caloriemate.models.User;
 import com.example.caloriemate.ui.program.ProgramActivityStep1;
@@ -32,6 +33,7 @@ public class StartViewActivity extends AppCompatActivity {
     ActivityStartViewBinding binding;
     List<User> users = new ArrayList<>();
     List<Program> programs = new ArrayList<>();
+    List<Meal> meals = new ArrayList<>();
     CalarieMateDatabase calarieMateDatabase;
 
     @Override
@@ -51,6 +53,9 @@ public class StartViewActivity extends AppCompatActivity {
 
                 calarieMateDatabase.programDAO().insertProgramsFromList(programs);
                 Log.d("DB", programs.size() + " programs added");
+
+                calarieMateDatabase.mealDao().insertMealsFromList(meals);
+                Log.d("DB", meals.size() + " meals added");
 
                 runOnUiThread(new Runnable() {
                     @Override
@@ -90,11 +95,13 @@ public class StartViewActivity extends AppCompatActivity {
             editor.commit();
             readUsersFromCSV();
             readProgramsFromCSV();
+            readMealsFromCSV();
         } else {
             // other time your app loads
             Log.d("CM", " NOT THE FIRST RUN");
             readUsersFromCSV();
             readProgramsFromCSV();
+            readMealsFromCSV();
         }
     }
 
@@ -137,6 +144,55 @@ public class StartViewActivity extends AppCompatActivity {
 
                 );
                 programs.add(eachProgram);
+            }
+        }
+        catch (IOException ex){
+            ex.printStackTrace();
+        } finally {
+            try{
+                inputStream.close();
+            }catch (IOException ex){
+                ex.printStackTrace();
+            }
+        }
+    }
+
+    private void readMealsFromCSV() {
+        meals = new ArrayList<>();
+        String inputLine;
+        InputStream inputStream = getResources().openRawResource(R.raw.meals);
+        BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+        //rest of the file read logic next class
+
+        try{
+            if((inputLine = reader.readLine()) !=null){
+                // header lin is contained in inputLine
+            }
+            while ((inputLine = reader.readLine()) != null){
+                String[] eachMealFields = inputLine.split(",");
+                Meal eachMeal = new Meal(
+                        // Id - 00001
+                        eachMealFields[0],
+                        // UserId - 00001
+                        eachMealFields[1],
+                        // ProgramId - 00001
+                        eachMealFields[2],
+                        // MealDate - 2024-08-04
+                        eachMealFields[3],
+                        // MealDay - Saturday
+                        eachMealFields[4],
+                        // MealType - Breakfast
+                        eachMealFields[5],
+                        // MealDescription -
+                        eachMealFields[6],
+                        // Name -
+                        eachMealFields[7],
+                        // Calories - 200
+                        Double.parseDouble(eachMealFields[8]),
+                        // MealObjString -
+                        eachMealFields[9]
+                );
+                meals.add(eachMeal);
             }
         }
         catch (IOException ex){

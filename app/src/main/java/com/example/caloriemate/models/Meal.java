@@ -24,6 +24,9 @@ public class Meal {
     @ColumnInfo(name = "mealDate")
     private String mealDate;
 
+    @ColumnInfo(name = "mealDay")
+    private String mealDay;
+
     @ColumnInfo(name = "mealType")
     private String mealType;
 
@@ -39,11 +42,12 @@ public class Meal {
     @ColumnInfo(name = "mealObjString")
     private String mealObjString;
 
-    public Meal(@NonNull String id, @NonNull String userId, String programId, @NonNull String mealDate, String mealType, String mealDescription, String name, double calories, String mealObjString) {
+    public Meal(@NonNull String id, @NonNull String userId, String programId, @NonNull String mealDate, String mealDay, String mealType, String mealDescription, String name, double calories, String mealObjString) {
         this.id = id;
         this.userId = userId;
         this.programId = programId;
         this.mealDate = mealDate;
+        this.mealDay = mealDay;
         this.mealType = mealType;
         this.mealDescription = mealDescription;
         this.name = name;
@@ -63,6 +67,14 @@ public class Meal {
     @NonNull
     public String getMealDate() {
         return mealDate;
+    }
+
+    public String getMealDay() {
+        return mealDay;
+    }
+
+    public void setMealDay(String mealDay) {
+        this.mealDay = mealDay;
     }
 
     public void setMealDate(@NonNull String mealDate) {

@@ -1,0 +1,7 @@
+Id,UserId,ProgramId,MealDate,MealDay,MealType,MealDescription,Name,Calories,MealObjString
+00001,00001,00001,2024-08-03,Saturday,Breakfast,Eggs,Eggs,200,Eggs
+00002,00001,00001,2024-08-03,Saturday,Lunch,Rice,Rice,300,Rice
+00003,00001,00001,2024-08-03,Saturday,Dinner,Steak,Steak,400,Steak
+00004,00001,00001,2024-08-04,Saturday,Breakfast,Eggs,Eggs,220,Eggs
+00005,00001,00001,2024-08-04,Saturday,Lunch,Rice,Rice,340,Rice
+00006,00001,00001,2024-08-04,Saturday,Dinner,Steak,Steak,520,Steak

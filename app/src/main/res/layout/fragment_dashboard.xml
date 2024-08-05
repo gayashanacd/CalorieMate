@@ -7,38 +7,14 @@
     tools:context=".ui.dashboard.DashboardFragment">
 
     <TextView
-        android:id="@+id/text_dashboard"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:text="@string/title_dashboard"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <View
-        android:id="@+id/divider1"
-        android:layout_width="409dp"
-        android:layout_height="1dp"
-        android:layout_marginTop="10dp"
-        android:background="?android:attr/listDivider"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_dashboard" />
-
-    <TextView
         android:id="@+id/textViewCalorieBudget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="16dp"
         android:text="@string/title_dashboard_calorie_budget"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider1" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewDateSelector" />
 
     <TextView
         android:id="@+id/textViewCalorieBudgetValue"
@@ -65,11 +41,11 @@
         android:id="@+id/textViewBreakfastTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="75dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="20dp"
         android:text="@string/title_dashboard_breakfast_calories"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider1" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewDateSelector" />
 
     <TextView
         android:id="@+id/textViewLunchTitle"
@@ -86,7 +62,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="3dp"
-        android:layout_marginEnd="50dp"
+        android:layout_marginEnd="45dp"
         android:text="@string/value_dashboard_lunch_calories"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewLunchTitle" />
@@ -135,12 +111,12 @@
         android:id="@+id/textViewLeftCalories"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="1dp"
+        android:layout_marginTop="50dp"
         android:text="@string/value_dashboard_left_calories"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+        app:layout_constraintTop_toBottomOf="@id/textViewLabelCalorieCompleted" />
 
     <TextView
         android:id="@+id/textViewLeftCaloriesTitle"
@@ -157,10 +133,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="75dp"
+        android:layout_marginTop="30dp"
         android:text="@string/title_dashboard_exercise"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider1" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewDateSelector" />
 
     <TextView
         android:id="@+id/textViewExerciseCalories"
@@ -237,7 +213,7 @@
         android:id="@+id/textViewDateSelector"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
+        android:layout_marginTop="20dp"
         android:ems="10"
         android:inputType="date"
         android:minHeight="48dp"
@@ -245,38 +221,28 @@
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider1"
+        app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints,SpeakableTextPresentCheck" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/buttonNextDay"
         android:layout_width="35dp"
         android:layout_height="35dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="15dp"
         android:src="@drawable/baseline_arrow_circle_right_24"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider1" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/buttonPreviousDay"
         android:layout_width="35dp"
         android:layout_height="35dp"
         android:layout_marginStart="15dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:src="@drawable/baseline_arrow_circle_left_24"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider1" />
-
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="190dp"
-        android:layout_height="143dp"
-        android:src="@drawable/progress_chart"
-        app:layout_constraintBottom_toTopOf="@+id/textViewLeftCalories"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewCalorieBudgetValue" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/textViewDashboardWeightNow"
@@ -309,5 +275,27 @@
         android:text="@string/value_dashboard_future_date"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewDashboardWeightFuture" />
+
+    <TextView
+        android:id="@+id/textViewCaloriePercentage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/value_dashboard_cal_completed"
+        android:textColor="@color/teal_700"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/textViewLeftCalories"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewCalorieBudgetValue" />
+
+    <TextView
+        android:id="@+id/textViewLabelCalorieCompleted"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="@string/label_dashboard_cal_completed"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewCaloriePercentage" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

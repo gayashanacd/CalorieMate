@@ -26,6 +26,8 @@
     <string name="title_dashboard_weight_now">Now</string>
     <string name="value_dashboard_weight_future">__ kg</string>
     <string name="value_dashboard_future_date">___ __</string>
+    <string name="value_dashboard_cal_completed">0 %</string>
+    <string name="label_dashboard_cal_completed">Completed</string>
     <string name="title_program_step1">Lets build your program</string>
     <string name="title_program_step1_gender">Gender</string>
     <string name="label_program_step1_gender_male">Male</string>

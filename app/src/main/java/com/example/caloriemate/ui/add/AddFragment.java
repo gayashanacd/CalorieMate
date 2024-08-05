@@ -39,10 +39,13 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.security.SecureRandom;
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.TextStyle;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -149,6 +152,8 @@ public class AddFragment extends Fragment {
         LocalDate currentDate = LocalDate.now();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
         String formattedDate = currentDate.format(formatter);
+        DayOfWeek dayOfWeek = currentDate.getDayOfWeek();
+        String dayName = dayOfWeek.getDisplayName(TextStyle.FULL, Locale.getDefault());
 
         int mealPosition = binding.spinnerAddMealType.getSelectedItemPosition();
         String mealType = "";
@@ -171,7 +176,7 @@ public class AddFragment extends Fragment {
             String name = jsonObject.getString("name");
             String calories = jsonObject.getString("calories");
 
-            Meal meal = new Meal(generateID(), userId, programId, formattedDate, mealType, binding.editTextAddMealVal.getText().toString(), name, Double.parseDouble(calories), jsonObject.toString());
+            Meal meal = new Meal(generateID(), userId, programId, formattedDate, dayName, mealType, binding.editTextAddMealVal.getText().toString(), name, Double.parseDouble(calories), jsonObject.toString());
 
             executorService.execute(new Runnable() {
                 @Override
