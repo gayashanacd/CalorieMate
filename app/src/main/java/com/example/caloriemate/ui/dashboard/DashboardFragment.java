@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -22,6 +23,7 @@ import com.example.caloriemate.utils.ProgramType;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.time.format.TextStyle;
 import java.util.ArrayList;
 import java.util.List;
@@ -67,11 +69,29 @@ public class DashboardFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 formattedDate = getPlusMinusDates("plus");
-                fetchData();
+                if(isFutureDate(formattedDate)){
+                    Toast.makeText(requireActivity(), "Selected date is a future date !", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    fetchData();
+                }
             }
         });
 
         return root;
+    }
+
+    public static boolean isFutureDate(String dateString) {
+        try {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            LocalDate givenDate = LocalDate.parse(dateString, formatter);
+            LocalDate currentDate = LocalDate.now();
+            return givenDate.isAfter(currentDate);
+        } catch (DateTimeParseException e) {
+            // Handle invalid date format
+            System.err.println("Invalid date format: " + dateString);
+            return false;
+        }
     }
 
     private void fetchData(){

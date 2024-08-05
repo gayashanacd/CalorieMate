@@ -26,8 +26,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         BottomNavigationView navView = findViewById(R.id.nav_view);
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
                 R.id.navigation_dashboard, R.id.navigation_visualisation, R.id.navigation_settings, R.id.navigation_add, R.id.navigation_profile)
                 .build();
@@ -36,15 +34,12 @@ public class MainActivity extends AppCompatActivity {
         NavigationUI.setupWithNavController(binding.navView, navController);
 
         FloatingActionButton fab = findViewById(R.id.fabAddNewMeal);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                getSupportFragmentManager().beginTransaction()
-//                        .replace(R.id.navigation_add, new AddFragment())
-//                        .addToBackStack(null)
-//                        .commit();
-//            }
-//        });
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                navView.setSelectedItemId(R.id.navigation_add);
+            }
+        });
 
     }
 

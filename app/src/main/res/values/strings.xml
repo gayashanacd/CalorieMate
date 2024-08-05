@@ -69,6 +69,7 @@
     <string name="value_program_step2_daily_calorie">____</string>
     <string name="label_add_meal_meal_type">Meal</string>
     <string name="btn_label_add_meal">Add</string>
+    <string name="buttonLableLogout">Logout</string>
 
     <string-array name="meal_type_items">
         <item>Breakfast</item>
