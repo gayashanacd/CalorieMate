@@ -83,14 +83,19 @@ public class StartViewActivity extends AppCompatActivity {
 
     private void setupInitialData() {
 
+        // clear prefs
+        SharedPreferences settings =  getSharedPreferences("PREFS_CM", 0);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putBoolean("IS_LOGGED", false);
+        editor.putString("USERID", "");
+        editor.putString("USERNAME", "");
+        editor.putString("PASSWORD", "");
+
         boolean isFirstRun = false;
-        SharedPreferences settings = getSharedPreferences("PREFS_CM", 0);
         isFirstRun = settings.getBoolean("FIRST_RUN", false);
         if (!isFirstRun) {
             // do the thing for the first time
             Log.d("CM", "FIRST RUN");
-            settings = getSharedPreferences("PREFS_CM", 0);
-            SharedPreferences.Editor editor = settings.edit();
             editor.putBoolean("FIRST_RUN", true);
             editor.commit();
             readUsersFromCSV();

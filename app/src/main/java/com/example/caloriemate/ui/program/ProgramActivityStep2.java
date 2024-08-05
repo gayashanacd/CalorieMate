@@ -92,14 +92,6 @@ public class ProgramActivityStep2 extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-        binding.buttonProgramBack.setVisibility(View.INVISIBLE);
-        binding.buttonProgramBack.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(ProgramActivityStep2.this, ProgramActivityStep1.class));
-            }
-        });
     }
 
     public static String generateID() {
@@ -128,13 +120,14 @@ public class ProgramActivityStep2 extends AppCompatActivity {
     }
 
     private void generateProfile(Bundle bundle) {
-        SharedPreferences settings = getSharedPreferences("PREFS_CM", 0);
-        userId = settings.getString("USERID", "");
+//        SharedPreferences settings = getSharedPreferences("PREFS_CM", 0);
+//        userId = settings.getString("USERID", "");
 
-        if(userId.equals("")){
-            userId = generateID();
-        }
+//        if(userId.equals("")){
+//            userId = generateID();
+//        }
 
+        userId = generateID();
         dob = bundle.getString("DOB");
         gender = bundle.getString("GENDER");
         age = calculateAge(dob);

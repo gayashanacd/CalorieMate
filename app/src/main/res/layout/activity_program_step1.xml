@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:text="@string/title_program_step1"
-        android:textSize="16sp"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -146,6 +146,7 @@
         android:layout_marginStart="36dp"
         android:layout_marginTop="15dp"
         android:ems="10"
+        android:hint="@string/label_date_format_hint"
         android:inputType="date"
         android:minHeight="48dp"
         app:layout_constraintStart_toEndOf="@+id/textViewProgramStep1Dob"
@@ -204,4 +205,14 @@
         android:text="@string/label_program_next"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/buttonProgramStep1Back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginBottom="20dp"
+        android:text="@string/label_program_back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

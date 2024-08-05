@@ -56,49 +56,48 @@ public class VisualisationFragment extends Fragment {
             @Override
             public void run() {
                 List<DailyCaloryIntakeTuple> dailyData = cmDB.mealDao().getDailyUsage(userId);
-                String[] days = new String[dailyData.size()];
-                barArraylist = new ArrayList();
-
-                for(int i=0; i<dailyData.size(); i++){
-                    days[i] = dailyData.get(i).getMealDate();
-                    barArraylist.add(new BarEntry((float) i, (float) dailyData.get(i).getCalories()));
+                if(dailyData.size() > 0){
+                    setChartData(dailyData);
                 }
-
-                BarChart barChart = binding.barChartUsage;
-                BarDataSet barDataSet = new BarDataSet(barArraylist,"Daily Calorie Intake");
-                BarData barData = new BarData(barDataSet);
-                barChart.setData(barData);
-                barChart.setFitBars(true);
-                barChart.invalidate();
-
-                XAxis xAxis = barChart.getXAxis();
-                xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
-                xAxis.setDrawGridLines(false);
-
-                ValueFormatter formatter = new ValueFormatter() {
-                    @Override
-                    public String getAxisLabel(float value, AxisBase axis) {
-                        return days[(int) value];
-                    }
-                };
-
-                xAxis.setGranularity(1f);
-                xAxis.setValueFormatter(formatter);
-                barDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
-                barDataSet.setValueTextColor(Color.BLACK);
-                barDataSet.setValueTextSize(14f);
-                barChart.getDescription().setEnabled(true);
-
-                getActivity().runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        // setData();
-                    }
-                });
             }
         });
 
         return root;
+    }
+
+    private void setChartData(List<DailyCaloryIntakeTuple> dailyData){
+        String[] days = new String[dailyData.size()];
+        barArraylist = new ArrayList();
+
+        for(int i=0; i<dailyData.size(); i++){
+            days[i] = dailyData.get(i).getMealDate();
+            barArraylist.add(new BarEntry((float) i, (float) dailyData.get(i).getCalories()));
+        }
+
+        BarChart barChart = binding.barChartUsage;
+        BarDataSet barDataSet = new BarDataSet(barArraylist,"Daily Calorie Intake");
+        BarData barData = new BarData(barDataSet);
+        barChart.setData(barData);
+        barChart.setFitBars(true);
+        barChart.invalidate();
+
+        XAxis xAxis = barChart.getXAxis();
+        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+        xAxis.setDrawGridLines(false);
+
+        ValueFormatter formatter = new ValueFormatter() {
+            @Override
+            public String getAxisLabel(float value, AxisBase axis) {
+                return days[(int) value];
+            }
+        };
+
+        xAxis.setGranularity(1f);
+        xAxis.setValueFormatter(formatter);
+        barDataSet.setColors(ColorTemplate.COLORFUL_COLORS);
+        barDataSet.setValueTextColor(Color.BLACK);
+        barDataSet.setValueTextSize(14f);
+        barChart.getDescription().setEnabled(true);
     }
 
     @Override

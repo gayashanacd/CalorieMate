@@ -65,5 +65,12 @@ public class ProgramActivityStep1 extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        binding.buttonProgramStep1Back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ProgramActivityStep1.this, StartViewActivity.class));
+            }
+        });
     }
 }

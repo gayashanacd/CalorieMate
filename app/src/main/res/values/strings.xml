@@ -70,6 +70,12 @@
     <string name="label_add_meal_meal_type">Meal</string>
     <string name="btn_label_add_meal">Add</string>
     <string name="buttonLableLogout">Logout</string>
+    <string name="lable_profile_username">Username</string>
+    <string name="label_profile_password">Password</string>
+    <string name="label_profile_firstname">First Name</string>
+    <string name="label_profile_lastname">Last Name</string>
+    <string name="button_label_profile_update">Update</string>
+    <string name="label_date_format_hint">2000-10-31</string>
 
     <string-array name="meal_type_items">
         <item>Breakfast</item>

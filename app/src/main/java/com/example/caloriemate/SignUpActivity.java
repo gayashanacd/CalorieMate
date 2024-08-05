@@ -6,6 +6,7 @@ import androidx.room.Room;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -37,6 +38,8 @@ public class SignUpActivity extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         userId = bundle.getString("NEW_USER_ID");
 
+        Log.d("CM-USERID_FROM", String.valueOf(userId));
+
         binding.buttonSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -65,6 +68,8 @@ public class SignUpActivity extends AppCompatActivity {
         else {
             _userId = userId;
         }
+
+        Log.d("CM-USERID_SAVE", String.valueOf(userId));
 
         userName = binding.editTextSignUpUsername.getText().toString();
         password = binding.editTextSignUpPassword.getText().toString();
