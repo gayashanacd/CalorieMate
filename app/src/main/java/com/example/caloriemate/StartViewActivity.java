@@ -91,22 +91,19 @@ public class StartViewActivity extends AppCompatActivity {
         editor.putString("USERNAME", "");
         editor.putString("PASSWORD", "");
 
-        boolean isFirstRun = false;
-        isFirstRun = settings.getBoolean("FIRST_RUN", false);
-        if (!isFirstRun) {
+        boolean isFirstRun = true;
+        isFirstRun = settings.getBoolean("FIRST_RUN", true);
+        if (isFirstRun) {
             // do the thing for the first time
             Log.d("CM", "FIRST RUN");
-            editor.putBoolean("FIRST_RUN", true);
-            editor.commit();
+            editor.putBoolean("FIRST_RUN", false);
+            editor.apply();
             readUsersFromCSV();
             readProgramsFromCSV();
             readMealsFromCSV();
         } else {
             // other time your app loads
-            Log.d("CM", " NOT THE FIRST RUN");
-            readUsersFromCSV();
-            readProgramsFromCSV();
-            readMealsFromCSV();
+            Log.d("CM", "NOT THE FIRST RUN");
         }
     }
 
